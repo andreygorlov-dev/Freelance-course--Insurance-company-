@@ -7,7 +7,8 @@ uses
   departmentForm in 'departmentForm.pas' {Form3},
   clientForm in 'clientForm.pas' {Form4},
   eventForm in 'eventForm.pas' {Form5},
-  policyForm in 'policyForm.pas' {Form6};
+  policyForm in 'policyForm.pas' {Form6},
+  addEditAgentForm in 'addEditAgentForm.pas' {Form7};
 
 {$R *.res}
 

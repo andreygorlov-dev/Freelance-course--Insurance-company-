@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,agentForm,departmentForm,clientForm,eventForm,policyForm;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Menus,agentForm,departmentForm,clientForm,eventForm,policyForm,
+  Data.DB, Data.Win.ADODB, System.ImageList, Vcl.ImgList;
 
 type
   TForm1 = class(TForm)
@@ -22,6 +23,8 @@ type
     N11: TMenuItem;
     N12: TMenuItem;
     N13: TMenuItem;
+    ADOConnection1: TADOConnection;
+    ImageList1: TImageList;
     procedure N3Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure N4Click(Sender: TObject);
@@ -30,6 +33,9 @@ type
     procedure N7Click(Sender: TObject);
     procedure N9Click(Sender: TObject);
     procedure N10Click(Sender: TObject);
+    procedure N11Click(Sender: TObject);
+    procedure N12Click(Sender: TObject);
+    procedure N13Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -55,11 +61,33 @@ begin
      clientFormOpen:=false;
      eventFormOpen:=false;
      polycyFormOpen:=false;
+     try
+        ADOConnection1.Connected:=true;
+     except
+        MessageDlg('БД не найдена',mtError,[mbOK],0);
+     end;
 end;
 
 procedure TForm1.N10Click(Sender: TObject);
 begin
      Cascade;
+end;
+
+procedure TForm1.N11Click(Sender: TObject);
+begin
+     TileMode:=tbHorizontal;
+     Tile;
+end;
+
+procedure TForm1.N12Click(Sender: TObject);
+begin
+     TileMode:=tbVertical;
+     Tile;
+end;
+
+procedure TForm1.N13Click(Sender: TObject);
+begin
+     ArrangeIcons;
 end;
 
 procedure TForm1.N3Click(Sender: TObject);
