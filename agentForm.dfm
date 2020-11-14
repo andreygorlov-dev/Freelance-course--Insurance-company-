@@ -25,13 +25,28 @@ object Form2: TForm2
     Width = 756
     Height = 423
     DataSource = DataSource1
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+    ParentFont = False
+    ReadOnly = True
     TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
-    TitleFont.Height = -11
+    TitleFont.Height = -13
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = DBGrid1CellClick
     Columns = <
+      item
+        Expanded = False
+        FieldName = 'ID'
+        Title.Caption = 'Id'
+        Visible = True
+      end
       item
         Expanded = False
         FieldName = 'FIO'
@@ -62,7 +77,6 @@ object Form2: TForm2
     Top = 0
     Width = 772
     Height = 33
-    ButtonHeight = 33
     Caption = 'ToolBar1'
     Images = Form1.ImageList1
     TabOrder = 1
@@ -78,12 +92,14 @@ object Form2: TForm2
       Top = 0
       Caption = 'ToolButton2'
       ImageIndex = 0
+      OnClick = ToolButton2Click
     end
     object ToolButton3: TToolButton
       Left = 46
       Top = 0
       Caption = 'ToolButton3'
       ImageIndex = 1
+      OnClick = ToolButton3Click
     end
     object ToolButton4: TToolButton
       Left = 69
@@ -94,19 +110,6 @@ object Form2: TForm2
       Style = tbsSeparator
       Visible = False
     end
-    object Edit1: TEdit
-      Left = 113
-      Top = 0
-      Width = 121
-      Height = 33
-      TabOrder = 0
-    end
-    object ToolButton5: TToolButton
-      Left = 234
-      Top = 0
-      Caption = 'ToolButton5'
-      ImageIndex = 2
-    end
   end
   object ADOQuery1: TADOQuery
     Active = True
@@ -115,8 +118,8 @@ object Form2: TForm2
     Parameters = <>
     SQL.Strings = (
       
-        'SELECT AgentTable.FIO, DepartmentTable.NameDepartment, AgentTabl' +
-        'e.Salary, AgentTable.Pay'
+        'SELECT AgentTable.ID,AgentTable.FIO, DepartmentTable.NameDepartm' +
+        'ent, AgentTable.Salary, AgentTable.Pay'
       
         'FROM DepartmentTable INNER JOIN AgentTable ON DepartmentTable.ID' +
         ' = AgentTable.Department_ID;')
@@ -127,5 +130,12 @@ object Form2: TForm2
     DataSet = ADOQuery1
     Left = 328
     Top = 224
+  end
+  object ADOQuery2: TADOQuery
+    Connection = Form1.ADOConnection1
+    CursorType = ctStatic
+    Parameters = <>
+    Left = 184
+    Top = 328
   end
 end
