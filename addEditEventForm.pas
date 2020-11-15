@@ -31,7 +31,7 @@ var
 
 implementation
 
-uses mainForm, eventForm;
+uses mainForm, eventForm,policyForm;
 
 {$R *.dfm}
 
@@ -51,6 +51,7 @@ begin
                 End;
                 AdoQuery2.ExecSQL;
                 if (Assigned(eventForm.Form5))then eventForm.RefreshData;
+                if (Assigned(policyForm.Form6))then policyForm.RefreshData;
               except
                     MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);
                     exit;

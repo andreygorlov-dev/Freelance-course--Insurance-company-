@@ -33,7 +33,7 @@ var
 
 implementation
 
-uses mainForm, departmentForm,agentForm;
+uses mainForm, departmentForm,agentForm,policyForm;
 
 {$R *.dfm}
 
@@ -56,6 +56,7 @@ begin
                 AdoQuery2.ExecSQL;
                 if (Assigned(departmentForm.Form3))then departmentForm.RefreshData;
                 if (Assigned(agentForm.Form2))then agentForm.RefreshData;
+                if (Assigned(policyForm.Form6))then policyForm.RefreshData;
               except
                     MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);
                     exit;

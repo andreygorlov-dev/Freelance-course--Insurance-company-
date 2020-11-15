@@ -40,7 +40,7 @@ procedure RefreshData;
 
 implementation
 
-uses mainForm,agentForm;
+uses mainForm,agentForm,policyForm;
 
 {$R *.dfm}
 
@@ -52,6 +52,7 @@ End;
 
 procedure TForm3.DBGrid1CellClick(Column: TColumn);
 begin
+     if(ADOQuery1.RecordCount=0)then exit;
      selectRowId:=DBGrid1.DataSource.DataSet.FieldByName('Id').value;
 end;
 
@@ -93,6 +94,7 @@ end;
 
 procedure TForm3.ToolButton2Click(Sender: TObject);
 begin
+     if(ADOQuery1.RecordCount=0)then exit;
      ADOQuery2.Close;
      ADOQuery2.SQL.Clear;
      if(selectRowId=-1)then
@@ -107,12 +109,15 @@ begin
      ADOQuery2.SQL.Add('DELETE FROM DEPARTMENTTABLE WHERE(ID='+IntToStr(selectRowId)+')');
      AdoQuery2.ExecSQL;
      RefreshData;
+     selectRowId:=-1;
+     if (Assigned(policyForm.Form6))then policyForm.RefreshData;
      if (Assigned(agentForm.Form2))then agentForm.RefreshData;
 end;
 
 procedure TForm3.ToolButton3Click(Sender: TObject);
 var formEdit:tForm;
 begin
+     if(ADOQuery1.RecordCount=0)then exit;
      if(selectRowId=-1)then
      Begin
           While(not(ADOQuery1.Eof))do

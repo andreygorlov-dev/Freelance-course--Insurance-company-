@@ -11,7 +11,8 @@ uses
   addEditAgentForm in 'addEditAgentForm.pas' {Form7},
   addEditDepartmentForm in 'addEditDepartmentForm.pas' {Form8},
   addEditClientForm in 'addEditClientForm.pas' {Form9},
-  addEditEventForm in 'addEditEventForm.pas' {Form10};
+  addEditEventForm in 'addEditEventForm.pas' {Form10},
+  addEditPolicyForm in 'addEditPolicyForm.pas' {Form11};
 
 {$R *.res}
 

@@ -39,7 +39,7 @@ var
 
 implementation
 
-uses mainForm, agentForm;
+uses mainForm, agentForm,policyForm;
 
 {$R *.dfm}
 
@@ -70,6 +70,7 @@ begin
                       End;
                    AdoQuery2.ExecSQL;
                    if (Assigned(agentForm.Form2))then agentForm.RefreshData;
+                   if (Assigned(policyForm.Form6))then policyForm.RefreshData;
                    except
                       MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);
                       exit;
@@ -141,6 +142,7 @@ begin
           begin
                MessageDlg('Ваши данные устарели такого агента больше нет!!!',mtError,[mbOK],0);
                idAgent:=-1;
+               DBLookupComboBox1.KeyValue:=i;
                BitBtn1.Caption:='Добавить агента';
           end;
      End else
