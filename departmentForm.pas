@@ -59,6 +59,7 @@ procedure TForm3.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
      mainForm.departmentFormOpen:=false;
      Form3.Free;
+     Form3:=nil;
 end;
 
 procedure TForm3.FormCreate(Sender: TObject);
@@ -105,7 +106,7 @@ begin
      if(selectRowId=-1)then exit;
      ADOQuery2.SQL.Add('DELETE FROM DEPARTMENTTABLE WHERE(ID='+IntToStr(selectRowId)+')');
      AdoQuery2.ExecSQL;
-     agentForm.RefreshData;
+     RefreshData;
      if (Assigned(agentForm.Form2))then agentForm.RefreshData;
 end;
 

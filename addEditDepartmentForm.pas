@@ -40,7 +40,7 @@ uses mainForm, departmentForm,agentForm;
 procedure TForm8.BitBtn1Click(Sender: TObject);
 begin
      if(Trim(Edit1.Text)<>'')then
-    Begin
+     Begin
          if(Trim(Edit2.Text)<>'')then
          Begin
               AdoQuery2.Close;
@@ -54,7 +54,7 @@ begin
                      ADOQuery2.Sql.Add('INSERT INTO DEPARTMENTTABLE (NAMEDEPARTMENT, LEADER) VALUES('''+Edit1.Text+''','''+Edit2.Text+''')');
                 End;
                 AdoQuery2.ExecSQL;
-                departmentForm.RefreshData;
+                if (Assigned(departmentForm.Form3))then departmentForm.RefreshData;
                 if (Assigned(agentForm.Form2))then agentForm.RefreshData;
               except
                     MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);

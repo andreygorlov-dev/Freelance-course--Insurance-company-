@@ -59,6 +59,7 @@ procedure TForm2.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
      mainForm.agentFormOpen:=false;
      Form2.Free;
+     Form2:=nil;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);

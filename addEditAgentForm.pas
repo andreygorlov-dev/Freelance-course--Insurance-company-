@@ -69,7 +69,7 @@ begin
                                               IntToStr(DBLookupComboBox1.KeyValue)+','+Salary+','+Pay+')');
                       End;
                    AdoQuery2.ExecSQL;
-                   agentForm.RefreshData;
+                   if (Assigned(agentForm.Form2))then agentForm.RefreshData;
                    except
                       MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);
                       exit;
