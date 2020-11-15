@@ -26,8 +26,6 @@ object Form4: TForm4
     Caption = 'ToolBar1'
     Images = Form1.ImageList1
     TabOrder = 0
-    ExplicitLeft = 65
-    ExplicitTop = 40
     object ToolButton1: TToolButton
       Left = 0
       Top = 0

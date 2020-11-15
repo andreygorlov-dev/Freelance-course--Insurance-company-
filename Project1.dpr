@@ -10,7 +10,8 @@ uses
   policyForm in 'policyForm.pas' {Form6},
   addEditAgentForm in 'addEditAgentForm.pas' {Form7},
   addEditDepartmentForm in 'addEditDepartmentForm.pas' {Form8},
-  addEditClientForm in 'addEditClientForm.pas' {Form9};
+  addEditClientForm in 'addEditClientForm.pas' {Form9},
+  addEditEventForm in 'addEditEventForm.pas' {Form10};
 
 {$R *.res}
 
