@@ -110,14 +110,12 @@ begin
      if(selectRowId=-1)then exit;
      ADOQuery2.SQL.Add('DELETE FROM AGENTTABLE WHERE(ID='+IntToStr(selectRowId)+')');
      AdoQuery2.ExecSQL;
-     agentForm.RefreshData;
+     RefreshData;
 end;
 
 procedure TForm2.ToolButton3Click(Sender: TObject);
 var formEdit:tForm;
 begin
-     ADOQuery2.Close;
-     ADOQuery2.SQL.Clear;
      if(selectRowId=-1)then
      Begin
           While(not(ADOQuery1.Eof))do

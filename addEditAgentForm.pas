@@ -68,12 +68,12 @@ begin
                            ADOQuery2.Sql.Add('Insert into AgentTable (FIO,Department_ID,Salary,Pay) values('''+Edit1.Text+''','+
                                               IntToStr(DBLookupComboBox1.KeyValue)+','+Salary+','+Pay+')');
                       End;
+                   AdoQuery2.ExecSQL;
+                   agentForm.RefreshData;
                    except
                       MessageDlg('Поля заполнены не корректно!!!!',mtError,[mbOK],0);
                       exit;
                    end;
-                   AdoQuery2.ExecSQL;
-                   agentForm.RefreshData;
               End else
               Begin
                    MessageDlg('Зарплата агента не указана',mtError,[mbOK],0);
@@ -91,12 +91,22 @@ end;
 procedure TForm7.BitBtn2Click(Sender: TObject);
 begin
      agentForm.editFormOpen:=false;
+     Edit1.Text:='';
+     Edit2.Text:='';
+     Edit3.Text:='';
+     idAgent:=-1;
+     ADOQuery1.Close;
      Form7.Free;
 end;
 
 procedure TForm7.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
      agentForm.editFormOpen:=false;
+     Edit1.Text:='';
+     Edit2.Text:='';
+     Edit3.Text:='';
+     idAgent:=-1;
+     ADOQuery1.Close;
      Form7.Free;
 end;
 
@@ -104,6 +114,7 @@ procedure TForm7.FormCreate(Sender: TObject);
 var i:integer;
     f:boolean;
 begin
+     ADOQuery1.Open;
      f:=true;
      while (not(adoQuery1.Eof)) do
      Begin
@@ -134,6 +145,7 @@ begin
           end;
      End else
      Begin
+          BitBtn1.Caption:='Добавить агента';
           DBLookupComboBox1.KeyValue:=i;
      End;
 end;
